@@ -55,6 +55,11 @@ public class RankService implements RankApi {
         return repository.getIndex(uuid).thenApply(RankTier::tag);
     }
 
+    @Override
+    public CompletableFuture<String> getRankNumeral(UUID uuid) {
+        return repository.getIndex(uuid).thenApply(RankTier::numeral);
+    }
+
     /** Primeiro uso pede confirmação; o segundo, dentro de 15 s, cobra e sobe. */
     public void rankup(Player player) {
         UUID uuid = player.getUniqueId();

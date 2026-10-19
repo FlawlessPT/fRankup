@@ -36,6 +36,11 @@ public enum RankTier {
         return of(index).color + "[" + of(index).displayName + ROMAN[DIVISIONS - index % DIVISIONS - 1] + "]";
     }
 
+    /** Só o numeral, por exemplo {@code §7[V]}. */
+    public static String numeral(int index) {
+        return of(index).color + "[" + ROMAN[DIVISIONS - index % DIVISIONS - 1] + "]";
+    }
+
     /** Rank com cores, por exemplo {@code §7Iron 5}. */
     public static String label(int index) {
         return of(index).color + of(index).displayName + " " + (DIVISIONS - index % DIVISIONS);
