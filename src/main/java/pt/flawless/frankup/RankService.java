@@ -49,9 +49,10 @@ public class RankService implements RankApi {
         return repository.getIndex(uuid);
     }
 
+    /** Tag com cores, por exemplo {@code §7[IronV]} (chat e scoreboard). */
     @Override
     public CompletableFuture<String> getRankLabel(UUID uuid) {
-        return repository.getIndex(uuid).thenApply(RankTier::label);
+        return repository.getIndex(uuid).thenApply(RankTier::tag);
     }
 
     /** Primeiro uso pede confirmação; o segundo, dentro de 15 s, cobra e sobe. */

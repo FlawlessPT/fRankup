@@ -29,6 +29,13 @@ public enum RankTier {
         return values()[index / DIVISIONS];
     }
 
+    private static final String[] ROMAN = {"I", "II", "III", "IV", "V"};
+
+    /** Tag para chat e scoreboard, por exemplo {@code §7[IronV]}. */
+    public static String tag(int index) {
+        return of(index).color + "[" + of(index).displayName + ROMAN[DIVISIONS - index % DIVISIONS - 1] + "]";
+    }
+
     /** Rank com cores, por exemplo {@code §7Iron 5}. */
     public static String label(int index) {
         return of(index).color + of(index).displayName + " " + (DIVISIONS - index % DIVISIONS);
