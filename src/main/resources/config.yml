@@ -8,7 +8,11 @@ messages:
   not-enough: "§cPrecisas de {custo} para subir para {proximo}§c. Tens {saldo}."
   success: "§aSubiste para {proximo}§a! §7(-{custo})"
   failed: "§cNão foi possível subir de rank."
-  max-reached: "§6§l{jogador} §ealcançou o rank máximo: {rank}§e!"
+  max-reached:
+    - " "
+    - "§6§l{jogador} §ealcançou o rank máximo!"
+    - "§eRank: {rank}"
+    - " "
   setrank-usage: "§cUso: /setrank <jogador> <tier> <divisão 1-5>"
   setrank-offline: "§c{jogador} não está online."
   setrank-invalid: "§cTier ou divisão inválidos (Iron, Bronze, Silver, Gold, Platinum, Emerald, Diamond; divisão 1 a 5)."

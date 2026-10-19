@@ -127,8 +127,8 @@ public class RankService implements RankApi {
             Bukkit.getScheduler().runTask(plugin, () -> {
                 Player p = Bukkit.getPlayer(uuid);
                 if (p == null) return;
-                Bukkit.broadcastMessage(messages.apply("max-reached")
-                        .replace("{jogador}", p.getName()).replace("{rank}", RankTier.label(LAST)));
+                for (String line : plugin.getConfig().getStringList("messages.max-reached"))
+                    Bukkit.broadcastMessage(line.replace("{jogador}", p.getName()).replace("{rank}", RankTier.label(LAST)));
             });
         } catch (RuntimeException e) {
             // plugin desligado entretanto
