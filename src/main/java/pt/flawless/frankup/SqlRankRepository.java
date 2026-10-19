@@ -13,6 +13,8 @@ public class SqlRankRepository implements RankRepository {
     private static final String INSERT_FIRST = "INSERT IGNORE INTO frankup_players (uuid, rank_index) VALUES (?, 1)";
     private static final String UPDATE = "UPDATE frankup_players SET rank_index = ? WHERE uuid = ? AND rank_index = ?";
 
+    private static final String UPSERT = "INSERT INTO frankup_players (uuid, rank_index) VALUES (?, ?) ON DUPLICATE KEY UPDATE rank_index = VALUES(rank_index)";
+
     private final DatabaseService database;
 
     public SqlRankRepository(DatabaseService database) {
@@ -27,6 +29,18 @@ public class SqlRankRepository implements RankRepository {
                 try (ResultSet rs = ps.executeQuery()) {
                     return rs.next() ? rs.getInt(1) : 0;
                 }
+            }
+        });
+    }
+
+    @Override
+    public CompletableFuture<Void> set(UUID uuid, int index) {
+        return database.supplyAsync(c -> {
+            try (PreparedStatement ps = c.prepareStatement(UPSERT)) {
+                ps.setString(1, uuid.toString());
+                ps.setInt(2, index);
+                ps.executeUpdate();
+                return (Void) null;
             }
         });
     }

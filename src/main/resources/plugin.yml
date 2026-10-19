@@ -10,3 +10,10 @@ commands:
   ranks:
     description: Mostra todos os ranks e o custo de cada rankup
     usage: /ranks
+  setrank:
+    description: Força o rank de um jogador, sem cobrar
+    usage: /setrank <jogador> <tier> <divisão 1-5>
+    permission: frankup.admin
+permissions:
+  frankup.admin:
+    description: Gerir ranks de outros jogadores

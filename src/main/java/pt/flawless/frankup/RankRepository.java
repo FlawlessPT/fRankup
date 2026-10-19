@@ -9,4 +9,7 @@ public interface RankRepository {
 
     /** Sobe de {@code from} para {@code from + 1}; {@code false} se o rank já não era {@code from}. */
     CompletableFuture<Boolean> advance(UUID uuid, int from);
+
+    /** Define o rank diretamente (cria a linha se não existir). */
+    CompletableFuture<Void> set(UUID uuid, int index);
 }

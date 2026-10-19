@@ -37,6 +37,15 @@ public class RankService implements RankApi {
         this.messages = messages;
     }
 
+    public Plugin plugin() {
+        return plugin;
+    }
+
+    public CompletableFuture<Void> setIndex(UUID uuid, int index) {
+        pending.remove(uuid);
+        return repository.set(uuid, index);
+    }
+
     public RankCosts costs() {
         return costs;
     }
@@ -105,10 +114,25 @@ public class RankService implements RankApi {
                     tell(uuid, "failed");
                 } else {
                     tell(uuid, "success", "{proximo}", RankTier.label(idx + 1), "{custo}", economy.format(cost));
+                    if (idx + 1 == LAST) announceMax(uuid);
                 }
                 return (Void) null;
             });
         }).thenCompose(f -> f);
+    }
+
+    /** Avisa o servidor inteiro de que o jogador chegou ao rank máximo. */
+    private void announceMax(UUID uuid) {
+        try {
+            Bukkit.getScheduler().runTask(plugin, () -> {
+                Player p = Bukkit.getPlayer(uuid);
+                if (p == null) return;
+                Bukkit.broadcastMessage(messages.apply("max-reached")
+                        .replace("{jogador}", p.getName()).replace("{rank}", RankTier.label(LAST)));
+            });
+        } catch (RuntimeException e) {
+            // plugin desligado entretanto
+        }
     }
 
     private void notEnough(UUID uuid, int idx, long cost, long balance) {
