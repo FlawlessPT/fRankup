@@ -1,0 +1,10 @@
+# Custo do rankup n (0 = Iron 5 -> Iron 4) = base * multiplier^n, arredondado ao euro.
+base: 100000
+multiplier: 2.0
+messages:
+  only-players: "Apenas jogadores."
+  max-rank: "§7Já estás no rank máximo: {atual}§7."
+  confirm: "§7Subir de {atual} §7para {proximo} §7custa §a{custo}§7. Repete §e/rankup §7em 15 s para confirmar."
+  not-enough: "§cPrecisas de {custo} para subir para {proximo}§c. Tens {saldo}."
+  success: "§aSubiste para {proximo}§a! §7(-{custo})"
+  failed: "§cNão foi possível subir de rank."

@@ -1,0 +1,12 @@
+name: fRankup
+main: pt.flawless.frankup.FRankup
+version: 1.0
+description: Ranks estilo League of Legends comprados com dinheiro
+depend: [fAPI, fDatabase, fEconomy]
+commands:
+  rankup:
+    description: Sobe para o rank seguinte (repetir o comando para confirmar)
+    usage: /rankup
+  ranks:
+    description: Mostra todos os ranks e o custo de cada rankup
+    usage: /ranks
