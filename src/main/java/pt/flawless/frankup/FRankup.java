@@ -30,6 +30,7 @@ public class FRankup extends JavaPlugin {
             getServer().getPluginManager().registerEvents(new RanksMenuListener(), this);
             getCommand("rankup").setExecutor(new RankupCommand(service, messages));
             getCommand("setrank").setExecutor(new SetRankCommand(service, messages));
+            getCommand("rank").setExecutor(new RankCommand(this, service, messages));
             getCommand("ranks").setExecutor(new RanksCommand(this, service, messages));
             getServer().getServicesManager().register(RankApi.class, service, this, ServicePriority.Normal);
         } catch (SQLException | RuntimeException e) {
