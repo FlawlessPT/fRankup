@@ -19,8 +19,8 @@ public class RankMenu implements InventoryHolder {
     public RankMenu(Player player, RankService service, int index, long balance) {
         this.player = player;
         this.inventory = new FInventory(this, FInventorySize.SIZE_27, "§8O teu rank").getInventory();
-        ItemStack glass = new FItemStack(Material.STAINED_GLASS_PANE, 1)
-                .setDisplayName(" ").setDurability((short) 7).createItem();
+        ItemStack glass = new FItemStack(Material.GRAY_STAINED_GLASS_PANE, 1)
+                .setDisplayName(" ").createItem();
         for (int i = 0; i < 27; i++) inventory.setItem(i, glass);
         inventory.setItem(CENTER, item(service, index, balance));
     }

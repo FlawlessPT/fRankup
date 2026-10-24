@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /** Os tiers do LoL até Diamond; cada um tem 5 divisões (5 a 1). */
 public enum RankTier {
     IRON("Iron", "§7", Material.IRON_INGOT),
-    BRONZE("Bronze", "§6", Material.CLAY_BRICK),
+    BRONZE("Bronze", "§6", Material.BRICK),
     SILVER("Silver", "§f", Material.QUARTZ),
     GOLD("Gold", "§e", Material.GOLD_INGOT),
     PLATINUM("Platinum", "§3", Material.PRISMARINE_CRYSTALS),

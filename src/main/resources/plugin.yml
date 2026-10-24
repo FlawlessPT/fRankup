@@ -1,6 +1,7 @@
 name: fRankup
 main: pt.flawless.frankup.FRankup
 version: 1.0
+api-version: '1.21'
 description: Ranks estilo League of Legends comprados com dinheiro
 depend: [fAPI, fDatabase, fEconomy]
 commands:
